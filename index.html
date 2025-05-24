@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All X Gaming</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+    <header class="p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">All X Gaming</h1>
+        <div class="flex items-center">
+        </div>
+    </header>
+
+    <div class="p-4">
+        <h2 class="text-xl font-semibold mb-4">New Games</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="new-games"></div>
+    </div>
+
+    <script>
+        const games = [
+            { 
+                id: 1, 
+                title: "Game A", 
+                category: "Adventure", 
+                image: "https://i.postimg.cc/26pcnWjs/Picsart-25-05-13-13-01-55-120.jpg", 
+                link: "game1.html",  // গেম ১ এর লিংক
+                isNew: true 
+            },
+            { 
+                id: 2, 
+                title: "Game B", 
+                category: "Puzzle", 
+                image: "https://via.placeholder.com/300x200", 
+                link: "game2.html",  // গেম ২ এর লিংক
+                isNew: true 
+            },
+            { 
+                id: 3, 
+                title: "Game C", 
+                category: "Action", 
+                image: "https://via.placeholder.com/300x200", 
+                link: "game3.html",  // গেম ৩ এর লিংক
+                isNew: true 
+             },
+            { 
+                id: 3, 
+                title: "Game C", 
+                category: "Action", 
+                image: "https://via.placeholder.com/300x200", 
+                link: "game2.html",  // গেম ৩ এর লিংক
+                isNew: true 
+             },
+            { 
+                id: 3, 
+                title: "Game C", 
+                category: "Action", 
+                image: "https://via.placeholder.com/300x200", 
+                link: "game3.html",  // গেম ৩ এর লিংক
+                isNew: true 
+            },
+            { 
+                id: 3, 
+                title: "Game C", 
+                category: "Action", 
+                image: "https://via.placeholder.com/300x200", 
+                link: "game3.html",  // গেম ৩ এর লিংক
+                isNew: true
+            },
+            { 
+            id: 3, 
+            title: "Game C", 
+            category: "Action", 
+            image: "https://via.placeholder.com/300x200", 
+            link: "game3.html",  // গেম ৩ এর লিংক
+            isNew: true 
+            },
+            { 
+                id: 3, 
+                title: "Game C", 
+                category: "Action", 
+                image: "https://i.postimg.cc/43MdXdHC/file-0000000059fc61f8880677e1967b282d.png/300x200", 
+                link: "game3.html",  // গেম ৩ এর লিংক
+                isNew: true 
+            },
+            { 
+                id: 4, 
+                title: "My Awesome Game", 
+                category: "Action", 
+                image: "https://via.placeholder.com/300x200?text=My+Awesome+Game", 
+                link: "game4.html",  // গেম ৪ এর লিংক
+                isNew: true
+            }
+        ];
+
+        function loadGames() {
+            const newGames = games.filter(game => game.isNew);
+            const recommendedGames = games.filter(game => game.isRecommended);
+            const popularGames = games.filter(game => game.isPopular);
+
+            renderGames("new-games", newGames);
+            renderGames("recommended-games", recommendedGames);
+            renderGames("popular-games", popularGames);
+        }
+
+        function renderGames(containerId, games) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = "";
+            games.forEach(game => {
+                container.innerHTML += `
+                    <div class="bg-gray-800 p-4 rounded-lg hover:bg-gray-700">
+                        <img src="${game.image}" alt="${game.title}" class="w-full h-48 object-cover rounded-t-lg">
+                        <h3 class="mt-2 font-medium">${game.title}</h3>
+                        <p class="text-gray-400 text-sm">${game.category}</p>
+                        <a href="${game.link}" class="game-link mt-2 inline-block px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">Play Now</a>
+                    </div>
+                `;
+            });
+        }
+
+        window.onload = loadGames;
+    </script>
+</body>
+</html>
